@@ -1,0 +1,36 @@
+describe('Homepage FAQ Accordion', () => {
+  beforeEach(() => {
+      cy.visit('https://www.webstacks.com/')
+  })
+
+  it('checks faq accordion is fully closed', () => {
+      cy.get('.bopmpS > :nth-child(1) > .jzojvv')
+          .invoke('attr', 'style')
+          .should('eq', 'height: 0px;')
+      cy.get('.bopmpS > :nth-child(2) > .jzojvv')
+          .invoke('attr', 'style')
+          .should('eq', 'height: 0px;')
+      cy.get('.bopmpS > :nth-child(3) > .jzojvv')
+          .invoke('attr', 'style')
+          .should('eq', 'height: 0px;')
+      cy.get('.bopmpS > :nth-child(4) > .jzojvv')
+          .invoke('attr', 'style')
+          .should('eq', 'height: 0px;')
+  })
+
+  it('checks all other accordion items are closed when first item is open', () => {
+      cy.get('.bopmpS > :nth-child(1)').click()
+      cy.get('.hFvkMq')
+          .invoke('attr', 'style')
+          .should('not.eq', 'height: 0px;')
+      cy.get('.bopmpS > :nth-child(2) > .jzojvv')
+          .invoke('attr', 'style')
+          .should('eq', 'height: 0px;')
+      cy.get('.bopmpS > :nth-child(3) > .jzojvv')
+          .invoke('attr', 'style')
+          .should('eq', 'height: 0px;')
+      cy.get('.bopmpS > :nth-child(4) > .jzojvv')
+          .invoke('attr', 'style')
+          .should('eq', 'height: 0px;')
+  })
+})
